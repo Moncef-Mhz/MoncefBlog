@@ -2,32 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+h1 {
+  @apply text-4xl;
+}
+h2 {
+  @apply text-3xl;
+}
+h3 {
+  @apply text-2xl;
+}
+h4 {
+  @apply text-xl;
+}
+p {
+  @apply text-lg leading-relaxed;
+}
+ul {
+  @apply list-disc text-lg;
+}
+ol {
+  @apply list-decimal text-lg;
+}
+ul,
+ol {
+  @apply pl-6;
+}
+a {
+  color: rgb(83, 83, 247);
+  text-decoration: underline;
+}
+pre {
+  background-color: rgb(19, 19, 19);
+  @apply text-white text-sm w-full rounded p-2;
+}
+blockquote {
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding-left: 20px;
+  margin-right: 20px;
+  /* border-color: rgb(255, 247, 236); */
+  border-left: 4px solid rgb(182, 182, 182);
+}
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+a,
+code,
+pre {
+  margin: 1em 0 1em 0;
+}
+p > img {
+  width: 935px;
+  aspect-ratio: 16/9;
+  object-fit: cover;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@media (max-width: 768px) {
+  h1 {
+    @apply text-3xl;
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  h2 {
+    @apply text-2xl;
+  }
+  h3 {
+    @apply text-lg;
+  }
+  h4 {
+    @apply text-lg;
+  }
+  p {
+    @apply text-base leading-relaxed;
   }
 }

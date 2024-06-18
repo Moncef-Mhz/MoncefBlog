@@ -3,9 +3,12 @@ import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { connectToDB } from "@/lib/DB";
 import User from "@/models/User";
-import bcrypt from "bcryptjs-react";
+import { register } from "module";
+// import bcrypt from "bcryptjs-react";
+const bcrypt = require("bcryptjs");
 
 type User = {
+  name: string;
   email: string;
   password: string;
   image?: string;
@@ -17,7 +20,7 @@ export const authOption = {
       name: "credentials",
       credentials: {},
       async authorize(credentials) {
-        const { email, password, image }: any = credentials;
+        const { email, password }: any = credentials;
 
         try {
           await connectToDB();
@@ -25,10 +28,7 @@ export const authOption = {
           if (!user) {
             return null;
           }
-          const passwordMatch =
-            password && user.password
-              ? await bcrypt.compare(password, user.password)
-              : false;
+          const passwordMatch = await bcrypt.compare(password, user.password);
           if (!passwordMatch) {
             return null;
           }
@@ -44,7 +44,7 @@ export const authOption = {
   },
   secret: process.env.NEXTAUTH_SECRET as string,
   pages: {
-    signIn: "/",
+    signIn: "/login",
   },
 };
 const handler = NextAuth(authOption as any);
