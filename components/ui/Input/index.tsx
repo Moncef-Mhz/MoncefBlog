@@ -1,11 +1,11 @@
-import React from "react";
+import React, { ChangeEventHandler } from "react";
 
 interface Props {
   className?: string;
   placeholder: string;
   label?: string;
   type: string;
-  varient: "default" | "ghost";
+  varient: "default" | "ghost" | "textarea";
   min?: number;
   max?: number;
   required?: boolean;
@@ -52,6 +52,26 @@ const Input = (props: Props) => {
           value={value}
           maxLength={max}
           type={type}
+        />
+      </div>
+    );
+  }
+  if (varient === "textarea") {
+    return (
+      <div className="space-y-2">
+        {label && <label className={labelClass}>{label}</label>}
+        <textarea
+          className={[
+            className,
+            "px-4 py-2 w-full rounded-md outline-none caret-black text-black border",
+          ]
+            .filter(Boolean)
+            .join("")}
+          placeholder={placeholder}
+          minLength={min}
+          onChange={onChange as ChangeEventHandler}
+          value={value}
+          maxLength={max}
         />
       </div>
     );

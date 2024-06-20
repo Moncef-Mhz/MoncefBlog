@@ -1,3 +1,5 @@
+import { Container, Image, LogOut, Tag, User } from "lucide-react";
+
 const NavLinks = [
   {
     name: "Home",
@@ -10,5 +12,10 @@ const NavLinks = [
     href: "/contact",
   },
 ];
-
-export { NavLinks };
+const items = [
+  { label: "Posts", icon: <Container />, key: "/admin/posts" },
+  { label: "Tags", icon: <Tag />, key: "/admin/tags" },
+  { label: "Users", icon: <User />, key: "/admin/users" },
+  { label: "Media", icon: <Image />, key: "/admin/media" },
+];
+export { NavLinks, items };
