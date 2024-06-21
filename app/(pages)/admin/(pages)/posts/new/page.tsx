@@ -9,11 +9,14 @@ import {
   CloudinaryUploadWidgetResults,
 } from "next-cloudinary";
 import Button from "@/components/ui/Button";
+import useSWR from "swr";
 
 type tags = {
   _id: string;
   name: string;
 };
+
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const NewPost = () => {
   const [title, setTitle] = useState<string>("");
@@ -23,17 +26,7 @@ const NewPost = () => {
   const [tag, setTag] = useState<string>("");
   const [image, setImage] = useState<string>("");
 
-  const [tags, setTags] = useState<tags[]>([]);
-
-  const fetchTags = async () => {
-    const res = await fetch("/api/tags");
-    const data = await res.json();
-    setTags(data);
-  };
-
-  useEffect(() => {
-    fetchTags();
-  }, []);
+  const { data: tags, isLoading } = useSWR<tags[]>("/api/tags", fetcher);
 
   const SubmitHandler = async (e: FormEvent) => {
     e.preventDefault();
@@ -117,7 +110,7 @@ const NewPost = () => {
             label="Tag"
             selectedValue={tag}
             onChange={(e) => setTag(e.target.value)}
-            options={tags}
+            options={tags ? tags : []}
           />
           <Input
             placeholder="Author"
