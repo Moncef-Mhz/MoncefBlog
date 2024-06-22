@@ -13,8 +13,6 @@ type PostsType = {
   tag: string;
 };
 
-export const runtime = "edge";
-
 export const POST = async (req) => {
   const { title, slug, author, description, content, image, tag } =
     await req.json();

@@ -1,7 +1,6 @@
 import { connectToDB } from "@/lib/DB";
 import Tags from "@/models/Tags";
 import { NextResponse } from "next/server";
-export const runtime = "edge";
 export const GET = async () => {
   try {
     connectToDB();
