@@ -1,11 +1,12 @@
-import { authOption } from "@/app/api/auth/[...nextauth]/route";
+"use client";
+
 import { items } from "@/constant";
-import { getServerSession } from "next-auth";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import React from "react";
 
-const Dashboard = async () => {
-  const session = await getServerSession(authOption as any);
+const Dashboard = () => {
+  const { data: session } = useSession();
   console.log(session);
   return (
     <div>

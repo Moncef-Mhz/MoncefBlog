@@ -1,11 +1,11 @@
+"use client";
 import React from "react";
 import RegisterForm from "@/components/layout/RegisterForm";
-import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import { authOption } from "@/app/api/auth/[...nextauth]/route";
+import { useSession } from "next-auth/react";
 
-export default async function Register() {
-  const session = await getServerSession(authOption as any);
+export default function Register() {
+  const { data: session } = useSession();
 
   if (session) redirect("/admin");
   return <RegisterForm />;

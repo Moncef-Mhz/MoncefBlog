@@ -2,9 +2,7 @@ import { connectToDB } from "@/lib/DB";
 import User from "@/models/User";
 import { NextResponse } from "next/server";
 
-export async function POST(req: {
-  json: () => PromiseLike<{ email: string }>;
-}) {
+export async function POST(req) {
   try {
     await connectToDB();
     const { email } = await req.json();

@@ -13,9 +13,7 @@ type PostsType = {
   tag: string;
 };
 
-export const POST = async (req: {
-  json: () => PromiseLike<PostsType> | PostsType;
-}) => {
+export const POST = async (req) => {
   const { title, slug, author, description, content, image, tag } =
     await req.json();
 
@@ -36,7 +34,7 @@ export const POST = async (req: {
   }
 };
 
-export const GET = async (req: NextApiRequest) => {
+export const GET = async (req) => {
   const url = req.url ? new URL(req.url) : new URL("/");
   const Searchparams = new URLSearchParams(url.searchParams);
 

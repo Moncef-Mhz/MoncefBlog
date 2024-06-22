@@ -3,8 +3,7 @@ import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { connectToDB } from "@/lib/DB";
 import User from "@/models/User";
-import { register } from "module";
-// import bcrypt from "bcryptjs-react";
+import { NextAuthOptions } from "next-auth";
 const bcrypt = require("bcryptjs");
 
 type User = {
@@ -14,7 +13,7 @@ type User = {
   image?: string;
 };
 
-export const authOption = {
+const handler = NextAuth({
   providers: [
     CredentialsProvider({
       name: "credentials",
@@ -46,6 +45,6 @@ export const authOption = {
   pages: {
     signIn: "/login",
   },
-};
-const handler = NextAuth(authOption as any);
+});
+
 export { handler as GET, handler as POST };

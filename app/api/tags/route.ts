@@ -12,9 +12,7 @@ export const GET = async () => {
   }
 };
 
-export const POST = async (req: {
-  json: () => PromiseLike<{ name: string }> | { name: string };
-}) => {
+export const POST = async (req) => {
   const { name } = await req.json();
   try {
     connectToDB();
