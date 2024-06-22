@@ -2,6 +2,8 @@ import { connectToDB } from "@/lib/DB";
 import User from "@/models/User";
 import { NextResponse } from "next/server";
 const bcrypt = require("bcryptjs");
+
+export const runtime = "edge";
 export const POST = async (req) => {
   try {
     const { name, email, password } = await req.json();

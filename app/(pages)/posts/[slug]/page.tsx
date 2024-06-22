@@ -19,7 +19,7 @@ type article = {
   updatedAt: string;
   __v: number;
 };
-
+export const runtime = "edge";
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const ArticlePage = () => {

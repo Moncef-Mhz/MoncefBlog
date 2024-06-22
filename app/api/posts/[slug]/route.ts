@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { connectToDB } from "@/lib/DB";
 import Posts from "@/models/Posts";
+
+export const runtime = "edge";
 export async function GET(
   request: Request,
   { params }: { params: { slug: string } }

@@ -12,7 +12,7 @@ type User = {
   password: string;
   image?: string;
 };
-
+export const runtime = "edge";
 const handler = NextAuth({
   providers: [
     CredentialsProvider({
