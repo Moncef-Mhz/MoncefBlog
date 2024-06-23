@@ -53,19 +53,15 @@ const NewPostPage = () => {
       });
 
       if (res.ok) {
-        alert("Post created successfully");
+        // alert("Post created successfully");
         setTitle("");
         setContent("");
         setImage("");
         setTag("");
         setDescription("");
-      } else {
-        const errorData = await res.json();
-        alert(`Error: ${errorData.message}`);
       }
     } catch (err) {
-      console.error(err);
-      alert("An error occurred while creating the post");
+      //   alert("An error occurred while creating the post");
     }
   };
 
