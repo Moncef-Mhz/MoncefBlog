@@ -5,6 +5,7 @@ import { AuthProvider } from "@/lib/AuthProvider";
 import AdminProvider from "@/lib/AdminProvider";
 import Head from "next/head";
 import Script from "next/script";
+// import { GoogleAnalytics } from "@next/third-parties/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head>
+      {/* <Head>
         <Script
           async
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALITICS}`}
@@ -35,8 +36,9 @@ export default function RootLayout({
             gtag('config',${process.env.GOOGLE_ANALYTICS});
           `}
         </Script>
-      </Head>
+      </Head> */}
       <body className={inter.className}>
+        {/* <GoogleAnalytics gtmId={process.env.GOOGLE_ANALITICS as string} /> */}
         <AuthProvider>
           <AdminProvider>{children}</AdminProvider>
         </AuthProvider>

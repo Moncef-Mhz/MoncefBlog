@@ -12,6 +12,7 @@
     "@editorjs/editorjs": "^2.29.1",
     "@editorjs/header": "^2.8.1",
     "@editorjs/list": "^1.9.0",
+    "@next/third-parties": "^14.2.4",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "bcryptjs-react": "^2.4.6",
