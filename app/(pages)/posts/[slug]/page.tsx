@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 
 import { Gutter } from "@/components/layout/Gutter";
 import useSWR from "swr";
-import { usePathname } from "next/navigation";
 
 type article = {
   title: string;
@@ -19,11 +18,12 @@ type article = {
   updatedAt: string;
   __v: number;
 };
+
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-const ArticlePage = () => {
-  const path = usePathname();
-  const slug = path.split("/")[2];
+const ArticlePage = ({ params }) => {
+  const slug = params["slug"];
+  console.log(slug);
 
   const { data: article, isLoading } = useSWR<article>(
     `/api/posts/${slug}`,
@@ -40,16 +40,17 @@ const ArticlePage = () => {
 
   return (
     <>
-      {article && (
-        <Gutter className="my-5 ">
+      <head>
+        <title>{article?.title}</title>
+        <meta name="description" content={article?.description} />
+      </head>
+      <Gutter className="my-5 px-10">
+        {article && (
           <div className="flex  flex-col items-center justify-center ">
             <div className="max-w-[935px]  h-full  space-y-5 ">
               <h1 className="text-3xl md:text-3xl leading-normal lg:text-6xl font-bold  text-center  capitalize">
                 {article.title}
               </h1>
-              <p className="text-base text-black/70 text-center">
-                {article?.description}
-              </p>
               <div className="flex items-center justify-around">
                 <h5>
                   by <strong>{article.author}</strong>
@@ -62,7 +63,6 @@ const ArticlePage = () => {
                   alt={article.title}
                 />
               </div>
-              {/* <HR color="black" /> */}
               <div className="flex px-4 items-center w-full justify-center">
                 <div
                   className="max-w-[935px] "
@@ -71,8 +71,8 @@ const ArticlePage = () => {
               </div>
             </div>
           </div>
-        </Gutter>
-      )}
+        )}
+      </Gutter>
     </>
   );
 };

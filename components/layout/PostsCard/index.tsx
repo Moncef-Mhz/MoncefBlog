@@ -11,7 +11,7 @@ interface PostProps {
     date: string;
     _id: string;
     description: string;
-    category: string;
+    tag: string;
   };
 }
 

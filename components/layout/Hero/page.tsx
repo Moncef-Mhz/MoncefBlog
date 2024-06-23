@@ -28,9 +28,9 @@ const Hero = () => {
 
   const limitedArticles = data?.slice(0, 3);
   return (
-    <Gutter className="grid mt-16 lg:grid-cols-3 lg:max-h-[500px] grid-cols-1 lg:grid-rows-2  gap-2   ">
+    <Gutter className="grid mt-10 lg:grid-cols-3 lg:max-h-[500px] grid-cols-1 lg:grid-rows-2  gap-2   ">
       {limitedArticles?.map((article) => (
-        <div className="first:col-span-2 first:row-span-2  col-span-1  group relative overflow-hidden rounded-sm">
+        <div className="first:col-span-2 first:row-span-2  col-span-1  group relative overflow-hidden rounded-md">
           <img
             src={article.image}
             alt={article.title}

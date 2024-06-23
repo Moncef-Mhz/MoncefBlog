@@ -1,4 +1,6 @@
-import { Container, Image, LogOut, Tag, User } from "lucide-react";
+import { Container, Dribbble, Image, LogOut, Tag, User } from "lucide-react";
+import Instagram from "next-auth/providers/instagram";
+import Twitter from "next-auth/providers/twitter";
 
 const NavLinks = [
   {
@@ -18,4 +20,36 @@ const items = [
   { label: "Users", icon: <User />, key: "/admin/users" },
   { label: "Media", icon: <Image />, key: "/admin/media" },
 ];
-export { NavLinks, items };
+const Category = [
+  {
+    id: 1,
+    title: "All",
+  },
+  {
+    id: 2,
+    title: "Programming",
+  },
+  {
+    id: 3,
+    title: "Design",
+  },
+  {
+    id: 4,
+    title: "Gaming",
+  },
+  {
+    id: 5,
+    title: "Finance",
+  },
+];
+const SocialMedia = [
+  {
+    id: 1,
+    name: "Dribble",
+    icon: <Dribbble />,
+    link: "https://dribbble.com/DesignByMoncef",
+  },
+  { id: 2, name: "Twitter", icon: <Twitter />, link: "" },
+  { id: 3, name: "Instagram", icon: <Instagram />, link: "" },
+];
+export { NavLinks, items, SocialMedia, Category };

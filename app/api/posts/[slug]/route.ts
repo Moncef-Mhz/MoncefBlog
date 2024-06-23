@@ -11,7 +11,6 @@ export async function GET(
   try {
     await connectToDB();
     const post = await Posts.findOne({ slug });
-    console.log(post);
 
     if (!post) {
       return NextResponse.json({ message: "Post not found" }, { status: 404 });

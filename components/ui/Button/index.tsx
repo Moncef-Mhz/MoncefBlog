@@ -5,6 +5,7 @@ type ButtonType = {
   className?: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   children: React.ReactNode;
+  disabled?: boolean;
   //   label: string;
   rounded: "full" | "lg" | "xl" | "md" | "sm";
 };
@@ -15,11 +16,13 @@ const Button: React.FC<ButtonType> = ({
   children,
   rounded,
   onClick,
+  disabled,
 }) => {
   if (variant === "default") {
     return (
       <button
-        className={`px-4 py-2 rounded-full bg-white text-black  `}
+        className={`px-4 py-2 space-x-2 rounded-full bg-white text-black  `}
+        disabled={disabled}
         onClick={onClick}
       >
         {children}

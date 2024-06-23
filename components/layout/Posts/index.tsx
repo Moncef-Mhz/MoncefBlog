@@ -3,6 +3,7 @@ import React from "react";
 import useSWRInfinite from "swr/infinite";
 import ArticlesCard from "@/components/layout/PostsCard";
 import { Loader2 } from "lucide-react";
+import Button from "@/components/ui/Button";
 
 type ArticlesType = {
   title: string;
@@ -13,7 +14,7 @@ type ArticlesType = {
   author: string;
   date: string;
   _id: string;
-  category: string;
+  tag: string;
 };
 
 const fetcher = async (url: string) => {
@@ -58,12 +59,13 @@ const BlogPosts = () => {
         <button
           disabled={isLoadingMore || isReachingEnd}
           onClick={() => setSize(size + 1)}
+          className="px-4 cursor-pointer py-2 space-x-2 rounded text-white bg-zinc-900 "
         >
           {isLoadingMore ? (
-            <>
+            <div className="flex items-center justify-center">
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               loading...
-            </>
+            </div>
           ) : isReachingEnd ? (
             "no more posts"
           ) : (
