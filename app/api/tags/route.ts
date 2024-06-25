@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 export const GET = async () => {
   try {
     connectToDB();
-    const tags = await Tags.find();
+    const tags = await Tags.find().sort({ name: 1 });
     return NextResponse.json(tags, { status: 200 });
   } catch (err) {
     return NextResponse.json(err, { status: 500 });

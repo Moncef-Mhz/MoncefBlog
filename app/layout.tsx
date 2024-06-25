@@ -5,6 +5,8 @@ import { AuthProvider } from "@/lib/AuthProvider";
 import AdminProvider from "@/lib/AdminProvider";
 import Head from "next/head";
 import Script from "next/script";
+import "react-quill/dist/quill.snow.css";
+
 // import { GoogleAnalytics } from "@next/third-parties/google";
 
 const inter = Inter({ subsets: ["latin"] });

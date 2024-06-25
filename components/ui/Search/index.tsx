@@ -25,7 +25,7 @@ const Search = () => {
 
   const { data: articles, error } = useSWR<PostsType[]>("/api/posts", fetcher);
 
-  const handleFilter = (filter) => {
+  const handleFilter = (filter: string) => {
     setSearchText(filter);
     const filtered = articles.filter((article) => {
       return article.title.toLowerCase().includes(filter.toLowerCase());
@@ -34,7 +34,7 @@ const Search = () => {
   };
 
   return (
-    <Gutter className="mt-6 ">
+    <Gutter className="my-6 ">
       <div className="max-w-md relative">
         <div className="relative">
           <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">

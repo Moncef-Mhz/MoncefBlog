@@ -4,11 +4,9 @@ import React from "react";
 
 const layout: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
   return (
-    <div className="md:flex ">
+    <div className="md:flex bg-zinc-900">
       <AdminSidePanel />
-      <div className="bg-zinc-900 w-full h-screen relative p-10 text-white">
-        {children}
-      </div>
+      <div className=" w-full h-full relative p-10 text-white">{children}</div>
     </div>
   );
 };

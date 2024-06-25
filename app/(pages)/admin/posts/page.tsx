@@ -2,7 +2,6 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import useSWR from "swr";
-import useSWRInfinite from "swr/infinite";
 
 type PostType = {
   title: string;
@@ -14,6 +13,19 @@ type PostType = {
   date: string;
   _id: string;
   tag: string;
+};
+
+const DeleteHandler = async (id: string) => {
+  const res = await fetch(`/api/posts`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      id,
+    }),
+  });
+  return { success: res.ok };
 };
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -33,25 +45,31 @@ const PostsPage = () => {
     isEmpty || (postsData && postsData[postsData.length - 1]?.length < 10);
 
   const filtredItems = posts.filter((item) => item.title == filter);
-  console.log(filtredItems);
 
   return (
     <div>
-      PostsPage
-      <Link href={"/admin/posts/new"}>new</Link>
+      <h1 className="font-bold">Posts</h1>
       <div className="mt-10">
         <div className="relative overflow-x-auto shadow-md rounded-lg">
-          <div className="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
-            <label className="sr-only">Search</label>
-            <div className="relative">
-              <input
-                type="text"
-                id="table-search"
-                value={filter}
-                onChange={(e) => setFilter(e.target.value)}
-                className="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50  outline-none"
-                placeholder="Search for items"
-              />
+          <div className="flex items-center gap-4 w-full justify-between">
+            <div className="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
+              <label className="sr-only">Search</label>
+              <div className="relative">
+                <input
+                  type="text"
+                  id="table-search"
+                  value={filter}
+                  onChange={(e) => setFilter(e.target.value)}
+                  className="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50  outline-none"
+                  placeholder="Search for items"
+                />
+              </div>
+              <Link
+                href={"/admin/posts/create"}
+                className="no-underline  group-hover:text-black  rounded-md px-4 py-2 ml-4 group hover:bg-gray-200 duration-100 bg-gray-50 text-black"
+              >
+                Create
+              </Link>
             </div>
           </div>
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -60,7 +78,7 @@ const PostsPage = () => {
                 <th scope="col" className="px-6 py-3">
                   Post Title
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="px-6 py-3 hidden lg:block">
                   Author
                 </th>
                 <th scope="col" className="px-6 py-3">
@@ -83,15 +101,21 @@ const PostsPage = () => {
                   >
                     {item.title}
                   </th>
-                  <td className="px-6 py-4">{item.author}</td>
+                  <td className="px-6 py-4 hidden lg:block">{item.author}</td>
                   <td className="px-6 py-4">{item.tag}</td>
                   <td className="px-6 py-4">
-                    <a
+                    {/* <a
                       href="#"
                       className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                     >
                       Edit
-                    </a>
+                    </a> */}
+                    <button
+                      onClick={() => DeleteHandler(item._id)}
+                      className="font-medium text-red-600 dark:text-red-500 hover:underline"
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))}
@@ -120,28 +144,3 @@ const PostsPage = () => {
 };
 
 export default PostsPage;
-
-// const fetcher = async (url: string) => {
-//   const res = await fetch(url);
-//   return res.json();
-// };
-
-// const {
-//   data: articlesData,
-//   isLoading,
-//   isValidating,
-//   size,
-//   setSize,
-// } = useSWRInfinite<ArticlesType[]>(
-//   (index) => `/api/articles?page=${index}`,
-//   fetcher
-// );
-
-// const articles: ArticlesType[] = articlesData ? articlesData.flat() : [];
-// const isLoadingMore =
-//   isLoading ||
-//   (size > 0 && articlesData && typeof articlesData[size - 1] === "undefined");
-// const isEmpty = articlesData?.[0]?.length === 0;
-// const isReachingEnd =
-//   isEmpty ||
-//   (articlesData && articlesData[articlesData.length - 1]?.length < 10);

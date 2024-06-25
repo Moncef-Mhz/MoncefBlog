@@ -28,7 +28,7 @@ const Hero = () => {
 
   const limitedArticles = data?.slice(0, 3);
   return (
-    <Gutter className="grid mt-10 lg:grid-cols-3 lg:max-h-[500px] grid-cols-1 lg:grid-rows-2  gap-2   ">
+    <Gutter className="grid  lg:grid-cols-3 lg:max-h-[500px] grid-cols-1 lg:grid-rows-2  gap-2   ">
       {limitedArticles?.map((article) => (
         <div
           key={article._id}

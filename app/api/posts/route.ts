@@ -53,3 +53,14 @@ export const GET = async (req) => {
     return NextResponse.json(err, { status: 500 });
   }
 };
+
+export const DELETE = async (req: Request) => {
+  const { id } = await req.json();
+  try {
+    await connectToDB();
+    await Posts.findByIdAndDelete(id);
+    return NextResponse.json("success");
+  } catch (err) {
+    return NextResponse.json(err);
+  }
+};

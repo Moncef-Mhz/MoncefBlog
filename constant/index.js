@@ -1,4 +1,12 @@
-import { Container, Dribbble, Image, LogOut, Tag, User } from "lucide-react";
+import {
+  Container,
+  Dribbble,
+  Image,
+  LayoutGrid,
+  LogOut,
+  Tag,
+  User,
+} from "lucide-react";
 import Instagram from "next-auth/providers/instagram";
 import Twitter from "next-auth/providers/twitter";
 
@@ -15,10 +23,11 @@ const NavLinks = [
   },
 ];
 const items = [
+  { label: "Dashboard", icon: <LayoutGrid />, key: "/admin/dashboard" },
   { label: "Posts", icon: <Container />, key: "/admin/posts" },
   { label: "Tags", icon: <Tag />, key: "/admin/tags" },
   { label: "Users", icon: <User />, key: "/admin/users" },
-  { label: "Media", icon: <Image />, key: "/admin/media" },
+  // { label: "Media", icon: <Image />, key: "/admin/media" },
 ];
 const Category = [
   {
