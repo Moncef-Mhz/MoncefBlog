@@ -11,7 +11,7 @@ import {
 } from "next-cloudinary";
 import "react-quill/dist/quill.snow.css";
 import useSWR from "swr";
-import { Slugify } from "@/utils/slugify";
+import { Slugify } from "@/utils/Slugify";
 
 type Tag = {
   _id: string;

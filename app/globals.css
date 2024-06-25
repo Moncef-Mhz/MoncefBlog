@@ -37,9 +37,7 @@ a {
 }
 pre {
   background-color: rgb(19, 19, 19);
-  @apply text-white text-sm p-2 rounded;
-}
-code {
+  @apply text-white text-sm p-2 rounded overflow-x-auto;
 }
 blockquote {
   display: block;
@@ -83,5 +81,45 @@ p > img {
   }
   p {
     @apply text-base leading-relaxed;
+  }
+  ul,
+  ol {
+    @apply text-lg;
+  }
+}
+@media (max-width: 550px) {
+  pre {
+    width: 500px !important;
+  }
+}
+@media (max-width: 425px) {
+  pre {
+    width: 380px !important;
+  }
+}
+@media (max-width: 375px) {
+  pre {
+    width: 325px !important;
+  }
+  h1 {
+    @apply text-2xl;
+  }
+  h2 {
+    @apply text-xl;
+  }
+  h3 {
+    @apply text-lg;
+  }
+  h4 {
+    @apply text-base;
+  }
+  p {
+    @apply text-sm leading-relaxed;
+  }
+}
+@media (max-width: 320px) {
+  ul,
+  ol {
+    @apply text-sm;
   }
 }

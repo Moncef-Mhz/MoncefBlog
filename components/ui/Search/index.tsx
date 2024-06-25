@@ -50,7 +50,7 @@ const Search = () => {
             onChange={(e) => handleFilter(e.target.value)}
           />
           {searchText && (
-            <div className="absolute bg-gray-50 w-full flex gap-2 flex-col p-2 max-h-[300px] drop-shadow-lg z-10 mt-2 rounded-lg overflow-y-scroll">
+            <div className="absolute border border-black bg-gray-50 w-full flex gap-2 flex-col p-2 max-h-[300px] drop-shadow-lg z-10 mt-2 rounded-lg overflow-y-scroll">
               {error && <span>Failed to load</span>}
               {filterdData.length === 0 ? (
                 <div className="grid place-content-center">not found</div>
