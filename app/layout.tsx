@@ -24,10 +24,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/* <Head>
+      <head>
         <Script
           async
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALITICS}`}
+          src="https://www.googletagmanager.com/gtag/js?id=G-1LEHWGE64V"
         ></Script>
         <Script>
           {`
@@ -35,10 +35,10 @@ export default function RootLayout({
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
-            gtag('config',${process.env.GOOGLE_ANALYTICS});
+            gtag('config', 'G-1LEHWGE64V');
           `}
         </Script>
-      </Head> */}
+      </head>
       <body className={inter.className}>
         {/* <GoogleAnalytics gtmId={process.env.GOOGLE_ANALITICS as string} /> */}
         <AuthProvider>
