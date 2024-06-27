@@ -29,11 +29,16 @@ ol {
 }
 ul,
 ol {
-  @apply pl-6;
+  @apply pl-10;
 }
 a {
   color: rgb(83, 83, 247);
   text-decoration: underline;
+}
+p > a,
+li > a {
+  color: rgb(83, 83, 247) !important;
+  text-decoration: none;
 }
 pre {
   background-color: rgb(19, 19, 19);

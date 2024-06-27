@@ -2,6 +2,7 @@
 import React from "react";
 import { Gutter } from "../Gutter";
 import useSWR from "swr";
+import Link from "next/link";
 
 type posts = {
   title: string;
@@ -28,11 +29,12 @@ const Hero = () => {
 
   const limitedArticles = data?.slice(0, 3);
   return (
-    <Gutter className="grid  lg:grid-cols-3 lg:max-h-[500px] grid-cols-1 lg:grid-rows-2  gap-2   ">
+    <Gutter className="grid lg:grid-cols-5 lg:max-h-[500px] grid-cols-1 lg:grid-rows-2 gap-2">
       {limitedArticles?.map((article) => (
-        <div
+        <Link
+          href={`/posts/${article.slug}`}
           key={article._id}
-          className="first:col-span-2 first:row-span-2  col-span-1  group relative overflow-hidden rounded-md"
+          className="first:col-span-3 first:row-span-2  col-span-2  group relative overflow-hidden rounded-md"
         >
           <img
             src={article.image}
@@ -47,7 +49,7 @@ const Hero = () => {
               {article.description.substring(0, 100)}
             </p>
           </div>
-        </div>
+        </Link>
       ))}
     </Gutter>
   );
