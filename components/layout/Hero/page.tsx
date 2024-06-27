@@ -3,6 +3,7 @@ import React from "react";
 import { Gutter } from "../Gutter";
 import useSWR from "swr";
 import Link from "next/link";
+import Image from "next/image";
 
 type posts = {
   title: string;
@@ -36,9 +37,11 @@ const Hero = () => {
           key={article._id}
           className="first:col-span-3 first:row-span-2  col-span-2  group relative overflow-hidden rounded-md"
         >
-          <img
+          <Image
             src={article.image}
             alt={article.title}
+            width={500}
+            height={500}
             className="object-cover w-full h-full aspect-square group-hover:scale-105 duration-150 cursor-pointer"
           />
           <div className="absolute bottom-0 left-0 space-y-2 py-4 px-4 bg-black/30 w-full shadow-lg opacity-0 group-hover:opacity-100 duration-150">

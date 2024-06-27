@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 
 import { Gutter } from "@/components/layout/Gutter";
 import useSWR from "swr";
+import Image from "next/image";
 
 type article = {
   title: string;
@@ -57,7 +58,9 @@ const ArticlePage = ({ params }) => {
                 </h5>
               </div>
               <div className="">
-                <img
+                <Image
+                  width={500}
+                  height={500}
                   src={article.image}
                   className="aspect-[16/12] lg:aspect-video w-full h-full object-cover"
                   alt={article.title}

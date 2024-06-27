@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 interface PostProps {
   item: {
@@ -22,7 +23,9 @@ const ArticlesCard: React.FC<PostProps> = ({ item }) => {
       key={item._id}
       className="flex group flex-col no-underline overflow-x-hidden items-start"
     >
-      <img
+      <Image
+        width={500}
+        height={500}
         src={item.image}
         alt={item.title}
         className="rounded hover:opacity-80 duration-75 aspect-video w-full object-cover"
