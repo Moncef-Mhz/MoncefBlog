@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
 const Footer = () => {
   const path = usePathname();
   return (
-    <Gutter className="w-full flex flex-col gap-4  left-0 bottom-0 bg-zinc-900 py-8 ">
+    <Gutter className="w-full flex flex-col gap-4   left-0 bottom-0 bg-zinc-900 py-8 ">
       <div className="flex flex-col md:flex-row justify-between items-center">
         <h3 className="text-white uppercase font-bold">DesignoBit</h3>
         <ul className="flex gap-4 m-0">

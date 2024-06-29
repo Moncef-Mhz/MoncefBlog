@@ -1,13 +1,8 @@
-import { Gutter } from "@/components/layout/Gutter";
+import AboutPage from "@/components/layout/AboutPage/page";
 import React from "react";
 
-const AboutPage = () => {
-  return (
-    <Gutter>
-      <h1>About Page</h1>
-      <p>This is about page</p>
-    </Gutter>
-  );
+const About = () => {
+  return <AboutPage />;
 };
 
-export default AboutPage;
+export default About;
