@@ -20,6 +20,7 @@ const Footer = () => {
                   ? "text-white text-lg no-underline "
                   : "text-white/70 text-lg no-underline  hover:text-white/90 duration-150"
               }
+              target={item.name === "Portfolio" ? "_blank" : "_self"}
               href={item.href}
               key={item.name}
             >

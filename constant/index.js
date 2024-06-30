@@ -1,12 +1,4 @@
-import {
-  Container,
-  Dribbble,
-  Image,
-  LayoutGrid,
-  LogOut,
-  Tag,
-  User,
-} from "lucide-react";
+import { Container, Dribbble, LayoutGrid, Tag, User } from "lucide-react";
 import Instagram from "next-auth/providers/instagram";
 import Twitter from "next-auth/providers/twitter";
 
@@ -18,8 +10,9 @@ const NavLinks = [
   { name: "Posts", href: "/posts" },
   { name: "About", href: "/about" },
   {
-    name: "Contact",
-    href: "/contact",
+    name: "Portfolio",
+
+    href: "https://moncefmeharzi.netlify.app/",
   },
 ];
 const items = [

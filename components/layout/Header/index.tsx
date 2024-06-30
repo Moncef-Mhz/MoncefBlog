@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { ReactNode, useState } from "react";
 import { NavLinks } from "@/constant/index";
 import { Gutter } from "@/components/layout/Gutter";
 import Link from "next/link";
@@ -29,10 +29,11 @@ function index() {
           <Link
             href={link.href}
             key={link.name}
+            target={link.name === "Portfolio" ? "_blank" : "_self"}
             className={
               path === link.href
-                ? "no-underline text-white"
-                : "no-underline text-white/70 hover:text-white duration-150"
+                ? "no-underline text-white "
+                : "no-underline text-white/70  hover:text-white duration-150"
             }
           >
             {link.name}
