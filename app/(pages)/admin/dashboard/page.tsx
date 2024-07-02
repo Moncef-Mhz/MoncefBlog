@@ -7,13 +7,12 @@ import React from "react";
 
 const Dashboard = () => {
   const { data: session } = useSession();
-  console.log(session);
   return (
-    <div>
+    <div className="w-full h-full">
       <h1 className="m-0">Welcome {session?.user?.name ?? "Admin"}</h1>
       <p className="m-0 text-white/70 text-sm">You are in the admin panel</p>
       <h1 className="text-white text-3xl font-bold mb-4 mt-10">Collections</h1>
-      <div className="flex items-center flex-wrap gap-5 m-0 ">
+      <div className="grid lg:grid-cols-6 md:grid-cols-3 grid-cols-1 gap-5 m-0 ">
         {items.map((item) => (
           <Link
             key={item.key}

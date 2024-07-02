@@ -40,7 +40,6 @@ export default function RootLayout({
         </Script>
       </head>
       <body className={inter.className}>
-        {/* <GoogleAnalytics gtmId={process.env.GOOGLE_ANALITICS as string} /> */}
         <AuthProvider>
           <AdminProvider>{children}</AdminProvider>
         </AuthProvider>
