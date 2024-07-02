@@ -40,7 +40,7 @@ const AdminSidePanel: React.FC = () => {
           </button>
         </div>
       ) : (
-        <div className=" w-full bottom-0 left-0 bg-[#191919] flex items-center justify-evenly py-6 border-t">
+        <div className=" w-full   bg-[#191919] flex items-center justify-evenly py-6 border-t">
           {items.map((item) => (
             <Link
               href={item.key}

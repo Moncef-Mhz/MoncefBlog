@@ -176,7 +176,7 @@ const CreatePostClient = () => {
               <img
                 src={image}
                 alt="Uploaded"
-                className="w-full aspect-square object-cover mt-2"
+                className="w-full aspect-video  object-cover mt-2"
               />
             )}
           </div>
