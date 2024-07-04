@@ -30,7 +30,7 @@ const Hero = () => {
 
   const limitedArticles = data?.slice(0, 3);
   return (
-    <Gutter className="grid lg:grid-cols-5 lg:max-h-[500px] grid-cols-1 lg:grid-rows-2 gap-2">
+    <Gutter className="grid lg:grid-cols-5 lg:max-h-[700px] grid-cols-1 lg:grid-rows-2 gap-2">
       {limitedArticles?.map((article) => (
         <Link
           href={`/posts/${article.slug}`}

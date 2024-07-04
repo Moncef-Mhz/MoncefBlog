@@ -34,7 +34,7 @@ const Search = () => {
   };
 
   return (
-    <Gutter className="my-6 ">
+    <Gutter className="mt-6 mb-2">
       <div className="max-w-md relative">
         <div className="relative">
           <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -64,8 +64,6 @@ const Search = () => {
                     <img
                       src={item.image}
                       alt={item.title}
-                      //   width={100}
-                      //   height={100}
                       className="rounded-md aspect-square object-cover w-[100px] h-[100px]"
                     />
                     <div>
