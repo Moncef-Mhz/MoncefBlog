@@ -1,20 +1,32 @@
-import React, { FormEvent, useState } from "react";
-import dynamic from "next/dynamic";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import SelectInput from "@/components/ui/Select";
+import { Slugify } from "@/utils/Slugify";
 import {
   CldUploadWidget,
   CloudinaryUploadWidgetResults,
 } from "next-cloudinary";
-import "react-quill/dist/quill.snow.css";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
+import React, { FormEvent, useEffect, useState } from "react";
+// import ReactQuill from "react-quill";
 import useSWR from "swr";
-import { Slugify } from "@/utils/Slugify";
 
+type PostType = {
+  title: string;
+  slug: string;
+  content: string;
+  description: string;
+  image: string;
+  tag: string;
+  _id: string;
+  author: string;
+};
 type Tag = {
   _id: string;
   name: string;
 };
+
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 const toolbarOptions = [
@@ -35,7 +47,9 @@ const toolbarOptions = [
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-const CreatePostClient = () => {
+const EditPostsClient = (props: { data: PostType }) => {
+  const { data } = props;
+
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const [description, setDescription] = useState<string>("");
@@ -43,48 +57,47 @@ const CreatePostClient = () => {
   const [tag, setTag] = useState<string>("");
   const [image, setImage] = useState<string>("");
 
+  useEffect(() => {
+    setTitle(data?.title);
+    setImage(data?.image);
+    setContent(data?.content);
+    setDescription(data?.description);
+    setTag(data?.tag);
+  }, [data]);
+
   const { data: tags, error } = useSWR<Tag[]>("/api/tags", fetcher);
+
+  const router = useRouter();
 
   const SubmitHandler = async (e: FormEvent) => {
     e.preventDefault();
-    if (!title || !content || !description || !author || !tag || !image) {
-      alert("Please enter all required fields");
-      return;
-    }
+
+    const updatedPost = {
+      _id: data?._id,
+      title: title,
+      slug: Slugify(title), // don't update slug on edit
+      content: content,
+      description: description,
+      author: author,
+      tag: tag,
+      image: image,
+    };
 
     try {
-      const res = await fetch("/api/posts", {
-        method: "POST",
-        body: JSON.stringify({
-          title,
-          slug: Slugify(title),
-          author,
-          description,
-          content,
-          image,
-          tag,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
+      const res = await fetch(`/api/posts/${data?.slug}`, {
+        method: "PUT",
+        body: JSON.stringify(updatedPost),
       });
-
+      // const UpdatedData = await res.json();
       if (res.ok) {
-        alert("Post created successfully");
-        setTitle("");
-        setContent("");
-        setImage("");
-        setTag("");
-        setDescription("");
-      } else {
-        const errorData = await res.json();
-        alert(`Error: ${errorData.message}`);
+        alert("Post has been updated successfully");
+        router.push(`/admin/posts`);
       }
-    } catch (err) {
-      console.error(err);
-      alert("An error occurred while creating the post");
+    } catch (error) {
+      console.error(error);
     }
   };
+
   return (
     <>
       {title ? (
@@ -188,4 +201,4 @@ const CreatePostClient = () => {
   );
 };
 
-export default CreatePostClient;
+export default EditPostsClient;

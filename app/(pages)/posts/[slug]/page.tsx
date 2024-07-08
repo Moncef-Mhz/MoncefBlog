@@ -24,7 +24,6 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const ArticlePage = ({ params }) => {
   const slug = params["slug"];
-  console.log(slug);
 
   const { data: article, isLoading } = useSWR<article>(
     `/api/posts/${slug}`,

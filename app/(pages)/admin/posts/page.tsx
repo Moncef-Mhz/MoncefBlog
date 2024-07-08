@@ -103,13 +103,13 @@ const PostsPage = () => {
                   </th>
                   <td className="px-6 py-4 hidden lg:block">{item.author}</td>
                   <td className="px-6 py-4">{item.tag}</td>
-                  <td className="px-6 py-4">
-                    {/* <a
-                      href="#"
-                      className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                  <td className="px-6 py-4 space-x-2">
+                    <Link
+                      href={`/admin/posts/edit/${item.slug}`}
+                      className="font-medium text-blue-600 dark:text-blue-500 no-underline hover:underline"
                     >
                       Edit
-                    </a> */}
+                    </Link>
                     <button
                       onClick={() => DeleteHandler(item._id)}
                       className="font-medium text-red-600 dark:text-red-500 hover:underline"

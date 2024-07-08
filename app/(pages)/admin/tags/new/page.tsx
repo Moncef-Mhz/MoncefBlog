@@ -15,14 +15,11 @@ const NewTag = () => {
         body: JSON.stringify({ name: name.toLowerCase() }),
       });
       const data = await res.json();
-      console.log(data);
 
       if (res.ok) {
         setName("");
       }
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
 
   return (

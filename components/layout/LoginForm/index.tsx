@@ -32,9 +32,7 @@ const LoginForm = () => {
         return;
       }
       router.replace("admin");
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
 
   return (

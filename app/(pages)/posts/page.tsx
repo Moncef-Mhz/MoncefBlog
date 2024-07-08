@@ -48,7 +48,6 @@ const BlogPosts = () => {
   if (!articles) {
     return <div>Loading...</div>;
   }
-  console.log(articles);
 
   return (
     <Gutter className="py-10 space-y-16">

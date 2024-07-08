@@ -31,9 +31,7 @@ const RegisterForm = () => {
       setError(data.error);
       return;
     }
-    console.log(data);
   };
-  console.log(name, email, password);
   return (
     <form
       className="grid place-content-center bg-white w-full h-screen"
