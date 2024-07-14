@@ -30,7 +30,7 @@ const Hero = () => {
 
   const limitedArticles = data?.slice(0, 3);
   return (
-    <Gutter className="grid lg:grid-cols-5 lg:max-h-[700px] grid-cols-1 lg:grid-rows-2 gap-2">
+    <Gutter className="grid lg:grid-cols-5 lg:max-h-[600px] grid-cols-1 lg:grid-rows-2 gap-2">
       {limitedArticles?.map((article) => (
         <Link
           href={`/posts/${article.slug}`}
@@ -42,7 +42,7 @@ const Hero = () => {
             alt={article.title}
             width={500}
             height={500}
-            className="object-cover w-full h-full aspect-square group-hover:scale-105 duration-150 cursor-pointer"
+            className="object-cover w-full h-full aspect-video group-hover:scale-105 duration-150 cursor-pointer"
           />
           <div className="absolute bottom-0 left-0 space-y-2 py-4 px-4 bg-black/30 w-full shadow-lg opacity-0 group-hover:opacity-100 duration-150">
             <h1 className="text-xl font-bold  group-hover:underline text-white m-0">
