@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 
 const AboutPage = () => {
   return (
-    <Gutter className="flex bg-zinc-900 flex-col  pb-10">
-      <div className="z-10">
+    <Gutter className="flex bg-zinc-900 h-full w-full flex-col   pb-10">
+      <div className="z-10 flex flex-col gap-2">
         <h1 className="text-white text-3xl lg:text-6xl font-bold font-mono ">
           Hi, I am moncef a web Developer & Designer with over 4 years of
           experience crafting seamless and engaging digital experiences.

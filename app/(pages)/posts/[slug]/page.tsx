@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Gutter } from "@/components/layout/Gutter";
 import useSWR from "swr";
 import Image from "next/image";
+import moment from "moment";
 
 type article = {
   title: string;
@@ -37,6 +38,7 @@ const ArticlePage = ({ params }) => {
       </h1>
     );
   }
+  var date = moment(article.createdAt).format("YYYY/MM/DD");
 
   return (
     <>
@@ -55,13 +57,14 @@ const ArticlePage = ({ params }) => {
                 <h5>
                   by <strong>{article.author}</strong>
                 </h5>
+                <h5>{date}</h5>
               </div>
               <div className="">
                 <Image
-                  width={500}
-                  height={500}
+                  width={1920}
+                  height={1080}
                   src={article.image}
-                  className="aspect-[16/12] lg:aspect-video w-full h-full object-cover"
+                  className=" w-full h-full object-cover"
                   alt={article.title}
                 />
               </div>
