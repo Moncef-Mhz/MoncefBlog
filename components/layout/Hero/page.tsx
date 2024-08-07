@@ -35,16 +35,16 @@ const Hero = () => {
         <Link
           href={`/posts/${article.slug}`}
           key={article._id}
-          className="first:col-span-3 first:row-span-2  col-span-2  group relative overflow-hidden rounded-md"
+          className="first:col-span-3 first:row-span-2 h-full  col-span-2  group relative overflow-hidden rounded-md"
         >
           <Image
             src={article.image}
             alt={article.title}
-            width={500}
-            height={500}
-            className="object-cover w-full h-full aspect-video group-hover:scale-105 duration-150 cursor-pointer"
+            width={1920}
+            height={1080}
+            className="object-cover w-full h-full aspect-video  cursor-pointer"
           />
-          <div className="absolute bottom-0 left-0 space-y-2 py-4 px-4 bg-black/30 w-full shadow-lg opacity-0 group-hover:opacity-100 duration-150">
+          <div className="absolute bottom-0 left-0 space-y-2 py-4 px-4 bg-black/60 w-full shadow-lg translate-y-28 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 duration-150">
             <h1 className="text-xl font-bold  group-hover:underline text-white m-0">
               {article.title}
             </h1>

@@ -25,7 +25,7 @@ const TagsPage = () => {
   // };
   return (
     <div>
-      <h1>Tags</h1>
+      <h1 className="font-bold">Tags</h1>
 
       <div className="mt-10 w-full">
         <div className="relative overflow-x-auto w-full shadow-md rounded-lg">

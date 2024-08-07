@@ -47,7 +47,7 @@ const PostsPage = () => {
   const filtredItems = posts.filter((item) => item.title == filter);
 
   return (
-    <div>
+    <>
       <h1 className="font-bold">Posts</h1>
       <div className="mt-10">
         <div className="relative overflow-x-auto shadow-md rounded-lg">
@@ -139,7 +139,7 @@ const PostsPage = () => {
           Next
         </button>
       </div>
-    </div>
+    </>
   );
 };
 
