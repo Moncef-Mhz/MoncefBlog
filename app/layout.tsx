@@ -10,6 +10,7 @@ import "react-quill/dist/quill.snow.css";
 // import { GoogleAnalytics } from "@next/third-parties/google";
 
 const inter = Inter({ subsets: ["latin"] });
+export const runtime = "edge";
 
 export const metadata: Metadata = {
   title: "DesignoBit",
